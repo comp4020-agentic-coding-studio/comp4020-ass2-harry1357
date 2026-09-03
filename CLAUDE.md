@@ -30,7 +30,13 @@ no separate document, so every course decision lands in content.
   message is the instruction: it names the file, the line, or the contract.
   Treat a red check as authoritative — the page is wrong until the check is
   green, not until you decide it should be.
-- Commit when the checks pass. Never commit a red state.
+- Commit when the checks pass. Never commit a red state — **with one exception,
+  and it matters this week**: a `spec/` test that is red because the course
+  isn't written yet is a *target*, not a regression. Those were committed red on
+  purpose and going red-to-green is the record of the work. Never weaken one to
+  get a green roster; if a spec test is wrong, say why and change it
+  deliberately in its own commit. A test that goes red because something I just
+  changed broke it is the ordinary case, and that still doesn't get committed.
 
 ## The checks (your sensors)
 
