@@ -1,6 +1,12 @@
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
+import { gitOrigin, resolveDeployment } from "../scripts/pages-base.ts";
+
+/** The deployed base path, derived the same way the build derives it. Never
+ *  hardcode the repo name: it is wrong the moment the repo is renamed, and
+ *  hardcoding it is the exact mistake this template's config exists to avoid. */
+const { base } = resolveDeployment(process.env, gitOrigin);
 
 // Assignment 2's published spec, as tests.
 //
@@ -196,10 +202,11 @@ describe("the deck", () => {
     // has to carry the base path too, or it 404s on the deployed site only.
     for (const lecture of withSlides()) {
       const html = built(`${lecture.id}/index.html`);
-      const route = String(lecture.meta?.slides).replace(/^\//, "");
+      const route = String(lecture.meta?.slides);
+      const deployed = `${base.replace(/\/$/, "")}${route}`;
       expect(
-        html.includes(`href="/comp4020-ass2-harry1357/${route}`) || html.includes(`href="${lecture.meta?.slides}`),
-        `${lecture.id} names a deck but its page has no link to it`,
+        html.includes(`href="${deployed}`) || html.includes(`href="${route}`),
+        `${lecture.id} names a deck but its page has no link to ${deployed}`,
       ).toBe(true);
     }
   });

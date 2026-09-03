@@ -12,7 +12,8 @@
     "check": "pnpm typecheck && pnpm lint && pnpm test",
     "check:evidence": "node scripts/check-evidence.ts",
     "test": "pnpm build && vitest run spec",
-    "test:template": "vitest run scripts"
+    "test:template": "vitest run scripts",
+    "check:viewports": "node scripts/check-viewports.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.0",

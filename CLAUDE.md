@@ -65,6 +65,13 @@ site that you can't reliably see by looking at it.
   `STARTER_CONTENT` comment when you replace that fragment** — leaving the marker
   on rewritten content fails the gate, and stripping the marker without
   rewriting the content is lying to it.
+- **viewports** (`pnpm check:viewports`) — a CDP probe that loads every built
+  page at 390×844 and 1920×1080 and asserts the body never scrolls sideways.
+  **Deliberately not in the `check` roster**: it needs Chrome, and a roster that
+  can go red because a browser didn't launch teaches you to ignore it. Run it
+  **before shipping and after any layout work** — `pnpm build && pnpm
+  check:viewports`. It starts by loading a synthetic 3000px page and failing if
+  it *doesn't* detect that, so a green run means the probe was looking.
 - **secrets** — `.githooks/pre-commit` blocks any commit containing something
   shaped like an API key. By the time CI sees a key it's already pushed, so the
   hook is the sensor that matters.
