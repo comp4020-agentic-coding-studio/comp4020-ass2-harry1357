@@ -161,53 +161,71 @@ at that. Two traps carry from crit 5:
 
 ## What a good course looks like
 
-The position, stated once so the rest of this file can point at it: **a course
-is one claim held for a semester.** Every week exists to move a named capability
-forward. The register is plain and the audience is narrow — a course that tries
-not to exclude anyone has no one in mind. The assessment tests what the weeks
-built, not what a student can recall. Twelve weeks that each introduce a
-different interesting thing is a reading list, not a course.
+The position comes from reading three course sites that work: **Calling
+Bullshit** (Bergstrom and West, UW), **How to Make (Almost) Anything**
+(Gershenfeld, MIT) and **CS 007** (Adam Nash, Stanford). None of them is a
+syllabus with content poured into it. Each is **one claim held for a
+semester** — every week exists to move a named capability forward, the register
+is plain and the audience is narrow, and the assessment tests what the weeks
+built rather than what a student can recall.
 
-These are course-design decisions, not platform facts: `README.md` neither knows
-nor cares about any of them. Each rule below either has a check in
-`spec/course-design.test.ts` or is named at the bottom of that file as a line
-only a person can judge.
+These are course-design decisions, not platform facts: `README.md` neither
+knows nor cares about any of them. Most have a check in
+`spec/course-design.test.ts`; the two that don't say so and why.
 
 - **The home page states the central claim in one sentence**, read from `claim`
   in `src/course-config.ts` so the page and the check can't drift apart. Every
-  week's page says in one line how that week serves the claim.
-- **Every week's frontmatter carries `object:` and `capability:`.** `object:` is
-  the one thing studied that week; `capability:` is one sentence in the form
-  "After this week you can ___". **No two weeks may share an object or a
+  week's page opens with one line saying how that week serves the claim.
+- **The home page lists all twelve capabilities as the learning objectives**,
+  generated from the weeks' `capability:` fields. Never a hand-written list — a
+  restated capability goes stale the first time a week is rewritten, and
+  nothing would notice.
+- **Every week's frontmatter carries `object:` and `capability:`.** `object:`
+  is the one thing studied that week; `capability:` is one sentence of the form
+  "After this week you can ___". **No two weeks share an object or a
   capability** — if two do, one of those weeks has no reason to exist.
+- **Week titles are claims, not topics.** A title states a position a student
+  could disagree with — "Speed Is a Reset, Not a Rate" — never a noun phrase
+  like "Speed and Initiative". **Deliberately not a spec check.** A regex can
+  tell a sentence from a noun phrase and cannot tell a claim from an assertion,
+  so the check would pass the weak titles and I'd start writing for it.
+- **The schedule page is a dense list**: one line per week — date, claim-title,
+  object. No paragraphs. Somebody deciding whether to take this wants the shape
+  of the semester on one screen, not twelve summaries of it.
 - **Every week has at least one concrete activity a student does**, not just
   reading: a heading naming the doing (activity, exercise, task, workshop, lab,
-  studio, make, build, write, try) or a markdown task list. The check holds that
-  vocabulary, so a heading that means it but says none of those words fails —
-  add the word or widen the list deliberately.
-- **Assessment items test a named capability from a named week, and the weights
-  sum to exactly 100.** An item declares `assesses:`, each entry either a ref to
-  the week (`sessions/<slug>`, or a bare slug) or that week's capability
-  sentence verbatim. **Prefer the ref**: one address per node, and the
-  capability is then read rather than restated. Weights are already held at 100
-  by `spec/assignment-2.test.ts`; don't assert that twice.
-- **No invented readings, papers, authors or URLs.** Reference only real,
-  verifiable sources or clearly in-course materials. A plausible-looking
-  citation to a paper that doesn't exist is the worst thing this site could
-  ship, and nothing here can catch it — the build's link checker only sees
-  internal links.
-- **Prose register: plain, direct, contractions allowed, no filler.** A
-  slop-lint in `spec/course-design.test.ts` bans these outright, case-
-  insensitively, across every body the API publishes plus the course record and
-  the claim: "delve", "dive into", "unpack", "journey", "tapestry",
-  "cutting-edge", "robust", "comprehensive", figurative "landscape", "it's
-  important to note", "in today's", "in this week we will", "at its core", and
-  "not just X but Y" constructions. Literal "landscape" (orientation, mode,
-  format, photography, painting) is exempt, because the ban is on the metaphor.
-- **No content page may be interchangeable with another.** If two weeks could
-  swap positions and nobody would notice, one of them is wrong. The checkable
-  corner of that is unique descriptions, objects and capabilities; the rest is
-  read, not measured.
+  studio, make, build, write, try) or a markdown task list. The check holds
+  that vocabulary, so a heading that means it but says none of those words
+  fails — say one of them, or widen the list deliberately.
+- **Readings: one or two real, linkable sources a week, or none.** Never pad a
+  week to look rigorous. **No invented readings, papers, authors or URLs.**
+  Nothing in the roster can catch a fabricated citation — the build's link
+  checker only sees internal links — so open every external URL before it
+  ships. Real games and their documented mechanics may be named freely; that's
+  commentary, and it is most of what this course is.
+- **Assessment items carry a `capability:` matching a week's exactly**, and the
+  weights sum to 100. An item testing something no week built is the failure
+  this whole position is aimed at.
+- **No copyrighted assets.** No screenshots, logos, box art or character art
+  from any game. Artwork is original and abstract. Describing a game's
+  documented mechanics is commentary; reproducing its art isn't mine to do.
+- **Register: plain, direct, second person, contractions, dry where it earns
+  it.** It should read like someone who played these games and kept notes.
+  These are banned outright, and the slop-lint in `spec/course-design.test.ts`
+  enforces them case-insensitively over every body the API publishes plus the
+  course record and the claim: "delve", "dive into", "unpack", "journey",
+  "tapestry", "cutting-edge", "robust", "comprehensive", figurative
+  "landscape", "it's important to note", "in today's", "in this week we will",
+  "at its core", and "not just … but" constructions. Literal "landscape"
+  (orientation, mode, format, photography, painting) is exempt — the ban is on
+  the metaphor.
+- **If two weeks could swap positions unnoticed, one of them is wrong.** The
+  checkable corner of that is unique descriptions, objects and capabilities.
+  The rest is read, not measured.
+- **`related:` convention: the later week points back** at the week it builds
+  on. The edge renders on both pages whichever side declares it, so the only
+  thing at stake is whether the source reads consistently — and it only does if
+  I pick one direction and hold it.
 
 ## Verifying the rendered page
 
