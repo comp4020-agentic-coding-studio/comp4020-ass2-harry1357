@@ -8,7 +8,7 @@ teachers:
   - idris-fenn
 related:
   - sessions/02-the-counter
-  - assessments/assignment-1
+  - assessments/turn-order-simulator
 ---
 
 <!-- STARTER_CONTENT: replace this lecture, then remove this comment. -->
