@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img">
+  <title>An abstract tile: a grid column with a counter running down to zero</title>
+  <rect width="600" height="600" fill="#e6e6e6"/>
+  <g stroke="#0d0d0d" stroke-opacity="0.16" stroke-width="2">
+    <path d="M0 100H600M0 200H600M0 300H600M0 400H600M0 500H600"/>
+    <path d="M100 0V600M200 0V600M300 0V600M400 0V600M500 0V600"/>
+  </g>
+  <g transform="translate(120 480)">
+    <rect x="0" y="-360" width="46" height="360" fill="#0f766e"/>
+    <rect x="76" y="-252" width="46" height="252" fill="#0f766e" fill-opacity="0.8"/>
+    <rect x="152" y="-160" width="46" height="160" fill="#0f766e" fill-opacity="0.62"/>
+    <rect x="228" y="-84" width="46" height="84" fill="#0f766e" fill-opacity="0.46"/>
+    <rect x="304" y="-14" width="46" height="14" fill="#c2410c"/>
+  </g>
+</svg>

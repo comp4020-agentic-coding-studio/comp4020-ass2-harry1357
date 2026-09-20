@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img">
+  <title>A spreadsheet grid with a row of counters running down to zero</title>
+  <rect width="1600" height="900" fill="#0d0d0d"/>
+  <g stroke="#ffffff" stroke-opacity="0.10" stroke-width="2">
+    <path d="M0 100H1600M0 200H1600M0 300H1600M0 400H1600M0 500H1600M0 600H1600M0 700H1600M0 800H1600"/>
+    <path d="M100 0V900M200 0V900M300 0V900M400 0V900M500 0V900M600 0V900M700 0V900M800 0V900M900 0V900M1000 0V900M1100 0V900M1200 0V900M1300 0V900M1400 0V900M1500 0V900"/>
+  </g>
+  <g stroke="#ffffff" stroke-opacity="0.28" stroke-width="3" fill="none">
+    <path d="M0 200H1600"/>
+    <path d="M200 0V900"/>
+  </g>
+  <g fill="#0f766e" fill-opacity="0.9">
+    <rect x="200" y="300" width="100" height="100"/>
+    <rect x="500" y="500" width="100" height="100"/>
+    <rect x="1100" y="200" width="100" height="100"/>
+  </g>
+  <g fill="#4f46e5" fill-opacity="0.85">
+    <rect x="700" y="300" width="100" height="100"/>
+    <rect x="900" y="600" width="100" height="100"/>
+  </g>
+  <g transform="translate(240 760)">
+    <rect x="0" y="-320" width="44" height="320" fill="#4f46e5"/>
+    <rect x="96" y="-286" width="44" height="286" fill="#4f46e5" fill-opacity="0.92"/>
+    <rect x="192" y="-244" width="44" height="244" fill="#0f766e"/>
+    <rect x="288" y="-210" width="44" height="210" fill="#0f766e" fill-opacity="0.92"/>
+    <rect x="384" y="-176" width="44" height="176" fill="#0f766e" fill-opacity="0.84"/>
+    <rect x="480" y="-140" width="44" height="140" fill="#4f46e5" fill-opacity="0.8"/>
+    <rect x="576" y="-112" width="44" height="112" fill="#0f766e" fill-opacity="0.74"/>
+    <rect x="672" y="-84" width="44" height="84" fill="#4f46e5" fill-opacity="0.7"/>
+    <rect x="768" y="-58" width="44" height="58" fill="#0f766e" fill-opacity="0.64"/>
+    <rect x="864" y="-36" width="44" height="36" fill="#4f46e5" fill-opacity="0.6"/>
+    <rect x="960" y="-18" width="44" height="18" fill="#0f766e" fill-opacity="0.55"/>
+    <rect x="1056" y="-6" width="44" height="6" fill="#c2410c"/>
+    <circle cx="1078" cy="28" r="13" fill="#c2410c"/>
+  </g>
+</svg>

@@ -3,12 +3,9 @@ import { getPublishedCollection } from "astro-course-university/content";
 import Card from "astro-theme-university/components/Card.astro";
 import CardGrid from "astro-theme-university/components/CardGrid.astro";
 import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
-import heroImage from "../assets/images/hero-home.avif";
+import heroImage from "../assets/images/hero-home.svg";
 import { claim, courseMeta, subtitle } from "../course-config";
 import { sessionLabels, siteConfig } from "../site-config";
-
-// STARTER_CONTENT: replace the hero artwork and its alt text below, then
-// remove this comment.
 
 // The objectives are the weeks' capabilities, read from the collection and
 // sorted by week. Never a list typed in here: a hand-written objective goes
@@ -27,7 +24,7 @@ const objectives = weeks
   title={`${courseMeta.code}: ${courseMeta.title}`}
   description={courseMeta.description}
   heroImage={heroImage}
-  heroImageAlt="A lecture theatre reduced to flat gold and black shapes, rows of seats sweeping past the frame, in a two-ink risograph print"
+  heroImageAlt="A dark spreadsheet grid with a few cells filled in teal and indigo, and a row of bars running down to a single orange mark at zero"
   {...siteConfig}
 >
   <p class="subtitle">{subtitle}</p>

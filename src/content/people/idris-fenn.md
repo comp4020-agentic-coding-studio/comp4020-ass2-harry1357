@@ -7,8 +7,8 @@ affiliation: Slop University School of Invented Disciplines
 role: tutor
 email: idris.fenn@slop.university
 contact: Ask during sessions, or email when a question cannot wait until the next one.
-photo: ./idris-fenn.avif
-photoAlt: A stylised portrait of a person facing the viewer, flat gold and black shapes on warm cream, in a two-ink risograph print
+photo: ./idris-fenn.svg
+photoAlt: An abstract tile — a column of bars on a spreadsheet grid, each shorter than the last, the final one orange at zero
 ---
 
 <!-- STARTER_CONTENT: replace this person entry, then remove this comment. -->
