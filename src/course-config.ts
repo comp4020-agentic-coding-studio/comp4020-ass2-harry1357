@@ -6,6 +6,23 @@ import { z } from "astro/zod";
 const LEVELS = [1, 2, 3, 4, 6, 8] as const;
 const allowedCode = new RegExp(`^SLOP[${LEVELS.join("")}]\\d{3}$`);
 
+/**
+ * The course's central claim: the one sentence the whole semester argues for.
+ * One sentence, long enough to be a claim rather than a slogan, short enough to
+ * sit in a hero.
+ */
+const claimSchema = z
+  .string()
+  .trim()
+  .min(40, { message: "shorter than this is a slogan, not a claim" })
+  .max(200, { message: "one sentence, not a paragraph" })
+  .refine((sentence) => sentence.endsWith("."), {
+    message: "state it as a finished sentence, ending in a full stop",
+  })
+  .refine((sentence) => !/[.!?]\s+\S/.test(sentence), {
+    message: "the claim is one sentence --- this one runs to several",
+  });
+
 export const slopCourseMetaSchema = z
   .strictObject({
     code: z.string().regex(allowedCode, {
@@ -60,3 +77,14 @@ export const courseMeta = slopCourseMetaSchema.parse({
     "and why somebody would choose to spend a semester taking it.",
   tags: ["replace me"],
 }) satisfies CourseMetaInput;
+
+// The claim is a sibling of `courseMeta` rather than a field of it because the
+// integration's `courseMetaSchema` is strict and parses the record at config
+// time: an extra key there fails the build. It is still the single source ---
+// the home page prints this constant and `spec/course-design.test.ts` reads it
+// back out of the built HTML, so the two cannot drift apart.
+// STARTER_CONTENT: replace this claim with the course's own, then remove this
+// comment.
+export const claim = claimSchema.parse(
+  "One sentence stating the course's central claim, which every week then moves forward.",
+);
