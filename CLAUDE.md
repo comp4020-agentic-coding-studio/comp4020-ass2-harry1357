@@ -100,6 +100,12 @@ instinct**. That template used relative URLs and no `base`; this one derives
   theme's components are rewritten for you; the build's link checker catches the
   rest — trust it rather than eyeballing.
 - `astro check` is the typecheck script, not `tsc --noEmit`.
+- **The integration's `courseMetaSchema` is a `strictObject` and it parses
+  `courseMeta` at config time**, so an invented key in that record fails the
+  build rather than passing through to the API — unlike a *content* node's
+  frontmatter, which is `.loose()` and does pass through. That asymmetry is why
+  the course's `claim` is a sibling export in `src/course-config.ts` rather than
+  a field of `courseMeta`.
 - The image pipeline needs `sharp`, and `allowBuilds: { sharp: true }` in
   `pnpm-workspace.yaml` or install warns.
 - The link-preview card is **`socialImage:` in `src/site-config.ts`**, not a
@@ -142,7 +148,8 @@ with different nouns.
 **The rules that go here are course-design decisions, and they're mine to make
 and write down as I make them.** This section starts near-empty on purpose;
 filling it — and turning the decisions that can be checked into `spec/` tests —
-is the work `PROCESS.md` has to narrate. Two that carry from crit 5:
+is the work `PROCESS.md` has to narrate; the section below it is the first pass
+at that. Two traps carry from crit 5:
 
 - **A rotating set of lines indexed off a counter that only goes up will
   collide.** Picking by `n % set.length` looks evenly distributed and isn't. The
@@ -151,6 +158,56 @@ is the work `PROCESS.md` has to narrate. Two that carry from crit 5:
 - **Check the register, not just the facts.** Content that is individually
   correct and collectively flat is the failure mode here, and no check will
   catch it. Read a week you didn't just write.
+
+## What a good course looks like
+
+The position, stated once so the rest of this file can point at it: **a course
+is one claim held for a semester.** Every week exists to move a named capability
+forward. The register is plain and the audience is narrow — a course that tries
+not to exclude anyone has no one in mind. The assessment tests what the weeks
+built, not what a student can recall. Twelve weeks that each introduce a
+different interesting thing is a reading list, not a course.
+
+These are course-design decisions, not platform facts: `README.md` neither knows
+nor cares about any of them. Each rule below either has a check in
+`spec/course-design.test.ts` or is named at the bottom of that file as a line
+only a person can judge.
+
+- **The home page states the central claim in one sentence**, read from `claim`
+  in `src/course-config.ts` so the page and the check can't drift apart. Every
+  week's page says in one line how that week serves the claim.
+- **Every week's frontmatter carries `object:` and `capability:`.** `object:` is
+  the one thing studied that week; `capability:` is one sentence in the form
+  "After this week you can ___". **No two weeks may share an object or a
+  capability** — if two do, one of those weeks has no reason to exist.
+- **Every week has at least one concrete activity a student does**, not just
+  reading: a heading naming the doing (activity, exercise, task, workshop, lab,
+  studio, make, build, write, try) or a markdown task list. The check holds that
+  vocabulary, so a heading that means it but says none of those words fails —
+  add the word or widen the list deliberately.
+- **Assessment items test a named capability from a named week, and the weights
+  sum to exactly 100.** An item declares `assesses:`, each entry either a ref to
+  the week (`sessions/<slug>`, or a bare slug) or that week's capability
+  sentence verbatim. **Prefer the ref**: one address per node, and the
+  capability is then read rather than restated. Weights are already held at 100
+  by `spec/assignment-2.test.ts`; don't assert that twice.
+- **No invented readings, papers, authors or URLs.** Reference only real,
+  verifiable sources or clearly in-course materials. A plausible-looking
+  citation to a paper that doesn't exist is the worst thing this site could
+  ship, and nothing here can catch it — the build's link checker only sees
+  internal links.
+- **Prose register: plain, direct, contractions allowed, no filler.** A
+  slop-lint in `spec/course-design.test.ts` bans these outright, case-
+  insensitively, across every body the API publishes plus the course record and
+  the claim: "delve", "dive into", "unpack", "journey", "tapestry",
+  "cutting-edge", "robust", "comprehensive", figurative "landscape", "it's
+  important to note", "in today's", "in this week we will", "at its core", and
+  "not just X but Y" constructions. Literal "landscape" (orientation, mode,
+  format, photography, painting) is exempt, because the ban is on the metaphor.
+- **No content page may be interchangeable with another.** If two weeks could
+  swap positions and nobody would notice, one of them is wrong. The checkable
+  corner of that is unique descriptions, objects and capabilities; the rest is
+  read, not measured.
 
 ## Verifying the rendered page
 
