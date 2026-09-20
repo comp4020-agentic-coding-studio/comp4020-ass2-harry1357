@@ -5,6 +5,9 @@ description:
   and a quadratic in the same game make two different economies
 week: 3
 date: 2027-03-08
+serves:
+  This is the week the costume comes off — the number floating up the screen is
+  the output of an equation you can write down.
 object: the damage equation
 capability:
   After this week you can reverse-engineer a damage formula from ten logged
@@ -23,9 +26,6 @@ links:
   - label: "Final Fantasy X Stat Mechanics FAQ (SinirothX, GameFAQs)"
     url: https://gamefaqs.gamespot.com/ps2/197344-final-fantasy-x/faqs/31381
 ---
-
-Serves the claim: this is the week the costume comes off. The number floating up
-the screen is the output of an equation, and you can write the equation down.
 
 ## A formula is a shape before it's a number
 
@@ -77,7 +77,7 @@ The method is the same one you'd use on any black box:
 Step 5 is the only one that counts. A fit that explains the data you already had
 is a description. A fit that predicts the eleventh hit is a model.
 
-## Activity: log ten hits, fit the formula, predict the eleventh
+## Exercise: log ten hits, fit the formula, predict the eleventh
 
 Pick one attacker and one target in the provided save. Attack ten times, logging
 every damage number. Raise the attacker's offensive stat by a known amount, log
@@ -88,7 +88,7 @@ Bring the predicted number and the actual number. Both of them, including the
 times you were badly wrong; a wrong prediction with a stated tolerance is worth
 more here than a right one with none.
 
-## Reading
+## Where these numbers came from
 
 Bulbapedia's Damage page is the fully worked Pokémon formula, modifier by
 modifier, with the generational differences marked. SinirothX's Stat Mechanics

@@ -5,6 +5,9 @@ description:
   you anything, and how Pokémon and Dragon Quest answer it differently
 week: 1
 date: 2027-02-22
+serves:
+  Before you can read a single number, you have to know when the game stops and
+  asks you something.
 object: the round
 capability:
   After this week you can diagram who acts, in what order, in a round-based
@@ -21,9 +24,6 @@ links:
   - label: "Dragon Quest Wiki: Agility"
     url: https://dragonquest-wiki.com/Agility
 ---
-
-Serves the claim: before you can read a single number you have to know when the
-game stops and asks you something. The round is where that shows.
 
 ## What a round actually is
 
@@ -84,7 +84,7 @@ name which of the four questions explains it.
 Bring the table. We'll put several reconstructions of the same fight side by
 side, and the rows people disagree about are the ones worth the hour.
 
-## Reading
+## Before next week
 
 Bulbapedia's Priority page has the bracket values and the tie rule. The Dragon
 Quest Wiki's Agility page has the turn-order formulas by era, including the

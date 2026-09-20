@@ -5,6 +5,9 @@ description:
   element that is doing work from one that is only adding noise
 week: 4
 date: 2027-03-15
+serves:
+  Once the formula is written down, the rolls around it stop being atmosphere
+  and become a design choice you can price.
 object: the roll
 capability:
   After this week you can say which random elements a fight needs, which it
@@ -21,9 +24,6 @@ links:
   - label: "Bulbapedia: Critical hit"
     url: https://bulbapedia.bulbagarden.net/wiki/Critical_hit
 ---
-
-Serves the claim: once the formula is written down, the rolls around it stop
-being atmosphere and start being a design choice you can price.
 
 ## Three rolls that do different jobs
 
@@ -68,7 +68,7 @@ shape of the distribution anywhere that matters, it isn't doing a job. Cut it.
 Most JRPG randomness is like this, inherited from tabletop where the dice were
 doing a job the computer now does invisibly.
 
-## Activity: price one boss's crit chance
+## Task: price one boss's crit chance
 
 Pick a boss from the provided saves. Using your week 3 formula, compute the
 expected damage per turn of its main attack with its crit chance, and again
@@ -80,7 +80,7 @@ numbers, and name what you'd have to change elsewhere to remove them. There's no
 right answer here and there are several wrong ones, all of which start with "it
 feels better".
 
-## Reading
+## One page worth reading
 
 Bulbapedia's Critical hit page has the rates and multipliers by generation,
 which is more interesting than it sounds — the multiplier dropped from 2× to

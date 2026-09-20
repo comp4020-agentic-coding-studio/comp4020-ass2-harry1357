@@ -131,6 +131,11 @@ construction, so renaming one means renaming all four.
   feature. Same shape applies to a content graph: one node is legitimately in
   several relationships, so collect into an array and render one edge per
   relationship.
+- **A colon inside an unquoted YAML value is a mapping, not prose.** A `serves:`
+  line reading `The costume comes off: the number is...` fails the content sync
+  with "can not read an implicit mapping pair", and the error names the file and
+  column rather than the key. Use an em dash in frontmatter prose, or quote the
+  whole value.
 - `published: false` removes an entry from the production build entirely but
   leaves it visible in `pnpm dev` — that's the staging lever, not `draft: true`,
   which keeps the page visible and only marks it unfinished.

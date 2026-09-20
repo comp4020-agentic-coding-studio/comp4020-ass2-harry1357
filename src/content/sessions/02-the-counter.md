@@ -5,6 +5,9 @@ description:
   faster, and what that buys a designer that an ATB gauge can't
 week: 2
 date: 2027-03-01
+serves:
+  This is the clearest case in the course of a number doing something other
+  than what its name says it does.
 object: the initiative counter
 capability:
   After this week you can predict the next five turns from a speed table and say
@@ -23,9 +26,6 @@ links:
   - label: "Final Fantasy Wiki: Rank (Final Fantasy X)"
     url: "https://finalfantasy.fandom.com/wiki/Rank_(Final_Fantasy_X)"
 ---
-
-Serves the claim: this is the clearest case in the course of a number doing
-something other than what its name says it does.
 
 ## Two ways to be fast
 
