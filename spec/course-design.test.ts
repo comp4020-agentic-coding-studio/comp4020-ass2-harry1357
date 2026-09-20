@@ -214,6 +214,67 @@ describe("assessment tests what the weeks built", () => {
 });
 
 // ---------------------------------------------------------------------------
+// "an assessment page is a brief, not a description"
+// ---------------------------------------------------------------------------
+
+/** The four parts a brief has to carry, each matched by a heading in any
+ *  wording. Vocabulary rather than exact text: the point is that the part is
+ *  there, not that I phrased its heading the way I did last time. */
+const BRIEF_PARTS: { part: string; heading: RegExp }[] = [
+  { part: "what is handed in", heading: /\b(hand(?:ed|s)?\s+in|submit|submission|deliverable)\b/i },
+  { part: "which week built the capability", heading: /\b(capabilit(?:y|ies)|week)\b/i },
+  { part: "how it is marked, in bands", heading: /\b(mark(?:s|ed|ing)?|bands?|judged|grades?)\b/i },
+  { part: "when it is due", heading: /\b(due|deadline|timeline|schedule|when|dates?)\b/i },
+];
+
+/** A band says what good looks like. A criterion table says only what is
+ *  weighted, which is why the template's marking block doesn't satisfy this. */
+const BANDS = ["strong", "adequate", "weak"];
+
+const headingsOf = (body: string): string[] =>
+  [...body.matchAll(/^#{2,4}\s+(.+?)\s*$/gm)].map((match) => match[1]);
+
+describe("an assessment page is a brief", () => {
+  it("carries all four parts, as four separate headings", () => {
+    const missing: string[] = [];
+    for (const item of nodes("assessments")) {
+      const headings = headingsOf(bodyOf(item));
+      const matched = new Set<string>();
+      for (const { part, heading } of BRIEF_PARTS) {
+        const hits = headings.filter((text) => heading.test(text));
+        if (hits.length === 0) {
+          missing.push(`${item.id} has no heading for ${part}`);
+          continue;
+        }
+        for (const hit of hits) matched.add(hit);
+      }
+      // Four parts under one heading is a paragraph wearing a title. The
+      // distinct count is what stops "What you submit and how it's marked"
+      // from standing in for two of them.
+      if (matched.size < BRIEF_PARTS.length) {
+        missing.push(
+          `${item.id} covers the four parts across only ${matched.size} heading(s)`,
+        );
+      }
+    }
+    expect(missing, "these pages describe an assessment rather than briefing one").toEqual([]);
+  });
+
+  it("says what a strong, an adequate and a weak submission look like", () => {
+    const missing: string[] = [];
+    for (const item of nodes("assessments")) {
+      const body = bodyOf(item).toLowerCase();
+      const absent = BANDS.filter((band) => !body.includes(band));
+      if (absent.length > 0) missing.push(`${item.id} never says ${absent.join(", ")}`);
+    }
+    expect(
+      missing,
+      "a student can't aim at a band that isn't written down",
+    ).toEqual([]);
+  });
+});
+
+// ---------------------------------------------------------------------------
 // "plain, direct, no filler" --- the slop-lint
 // ---------------------------------------------------------------------------
 

@@ -214,6 +214,15 @@ knows nor cares about any of them. Most have a check in
 - **Assessment items carry a `capability:` matching a week's exactly**, and the
   weights sum to 100. An item testing something no week built is the failure
   this whole position is aimed at.
+- **An assessment page is a brief, not a description.** It says what is handed
+  in, which week built the capability it tests, how it is marked in bands (what
+  a strong, an adequate and a weak submission each look like), and when it's
+  due. Four headings, any wording, and `spec/course-design.test.ts` looks for
+  all four. This came from the first read of the shipped site: the four pages
+  were a paragraph each, and a prospective student could tell that there was an
+  assessment without being able to tell what they'd hand in or how it would be
+  judged. Bands are the part that does the work — a criterion table says what
+  is weighted, and only a band says what good looks like.
 - **No copyrighted assets.** No screenshots, logos, box art or character art
   from any game. Artwork is original and abstract. Describing a game's
   documented mechanics is commentary; reproducing its art isn't mine to do.
