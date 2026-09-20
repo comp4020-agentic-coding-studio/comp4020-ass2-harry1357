@@ -24,29 +24,54 @@ related:
   - sessions/01-the-round
 ---
 
-Week 1 taught you to reconstruct a fight as a turn table. This is that, twelve
-times, kept as a running log rather than handed in at the end.
+A running log rather than a piece of work you start near the end. You build one
+table a week, all semester, and hand in the whole spreadsheet once.
 
 ## What you hand in
 
-One spreadsheet, twelve sheets, one per teaching week. Each sheet is a table
-with a row per action: actor, command, target, and the round or tick it landed
-in. Alongside it, the name of the recording and its timestamp, so a marker can
-open the same footage you did.
+One spreadsheet, twelve sheets, one per teaching week.
 
-Each sheet also carries a short list of marked rows — the ones where the turn
-order surprised you — with a sentence each saying which rule explains it.
+Each sheet is a table with a row per action: actor, command, target, and the
+round or tick it landed in. Above the table, the recording's name and the
+timestamp you started from, so a marker can open the same footage.
 
-## How it's marked
+Below it, a short list of the rows where the turn order surprised you, one
+sentence each saying which rule explains it.
 
-On whether a reader can replay the fight from the table.
+## The capability it tests
 
-That's the whole bar, and it's stricter than it sounds. A table that reads
-"Tidus attacks" is not replayable: it doesn't say what else could have acted at
-that moment, or why it didn't. A table that records the state alongside the
-action usually is. The marker's method is simply to try, with the recording
-closed, and to stop at the first row they can't reconstruct.
+Week 1's, exactly: diagramming who acts, in what order, and naming what the
+game had to decide to make that happen. Nothing later is examined here — a
+week 9 sheet is marked the same way as a week 1 sheet.
 
-Weeks where you were wrong about the order and said so score better than weeks
-where you quietly fixed the table afterwards. The marked rows are the evidence
-you were reading rather than transcribing.
+What changes across the semester is the fights, not the standard. By week 8 you
+are logging a break gauge and a stagger window, and the table still has to let
+somebody else replay it.
+
+## Marking bands
+
+**Strong.** A marker closes the recording, reads your table top to bottom, and
+can say at every row what else could have acted and why it didn't. The surprise
+list names real rules — a priority bracket, a rank cost, a tie order — and at
+least one entry admits you had the order wrong the first time.
+
+**Adequate.** The tables are complete and accurate, and a reader can follow
+what happened but not always why that actor and not another. Surprises are
+noted but explained loosely, or only in the weeks where the answer was easy.
+
+**Weak.** Transcription. Rows read "Tidus attacks" with no state alongside, so
+the table records the fight without reconstructing it. Missing sheets, or a
+surprise list that is empty for twelve weeks — nobody reads twelve fights
+without being wrong once, so an empty list means you weren't checking.
+
+## When it's due, and what happens before
+
+The deadline is at the top of this page. One hand-in, at the end.
+
+The sheets themselves are due weekly in the sense that the following week's
+session assumes the previous one is finished — week 2 builds its counter model
+against the table you made in week 1. Falling behind costs you the session, not
+marks, but the sessions are where the tables get better.
+
+Bring the running spreadsheet to any session and it will be read. A table looked
+at in week 3 is worth more to you than the same table looked at in week 13.
