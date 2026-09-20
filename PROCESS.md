@@ -55,7 +55,9 @@ checked — and the bodies were freed
 ([`42b4cfa`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/42b4cfa)).
 Week 9 now opens on the activity; week 8 opens on a wrong claim and knocks it
 down. That is the breakthrough for the retro: a reading observation that ended
-as a content-model change.
+as a content-model change. The assessment pages were the next thing a read
+caught, and the fix was a rule and a check rather than a rewrite
+([`aba7ee4`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/aba7ee4)).
 
 ## What I deliberately left out of the harness
 
@@ -66,7 +68,10 @@ Structural variety is a rule for the same reason. Reading counts are a rule, and
 more than padding, and I accepted that over a list. I didn't take HTMAA's
 one-machine-per-week, because the course isn't tool-based; Calling Bullshit's
 reading lists, because an invented reading is a lie the build can't catch; or CS
-007's deck-only weeks, because a marker reads prose.
+007's deck-only weeks, because a marker reads prose. I kept the starter's two
+lecture slots and made the sessions the course: a spreadsheet course needs a
+lecture only to state the claim and derive the model once
+([`a85f957`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/a85f957)).
 
 ## What the checks still can't see
 
