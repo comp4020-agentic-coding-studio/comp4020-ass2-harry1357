@@ -52,12 +52,6 @@ function meta(node: ApiNode, key: string): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
-function metaList(node: ApiNode, key: string): string[] {
-  const value = node.meta?.[key];
-  if (Array.isArray(value)) return value.filter((entry) => typeof entry === "string");
-  return typeof value === "string" ? [value] : [];
-}
-
 /** Two sentences that differ only in case, spacing or a trailing stop are the
  *  same sentence for the purpose of "no two weeks share a capability". */
 const normalise = (text: string): string =>
@@ -184,45 +178,37 @@ describe("every week asks the student to do something", () => {
 // "the assessment tests what the weeks built, not recall"
 //
 // The weights are held at exactly 100 by spec/assignment-2.test.ts ("assessment
-// adds up to 100%"), which also checks each internal marking model. Asserting
-// it again here would give one broken sum two red lines in two files and no
-// extra information, so this describe block only covers the half that is mine:
-// what an item is allowed to claim it tests.
+// adds up to 100%"), which also checks each internal marking model adds up.
+// Extending that rather than restating it here: one broken sum should fail in
+// one place with one message, not light up two files and leave me wondering
+// whether they disagree.
 // ---------------------------------------------------------------------------
 
 describe("assessment tests what the weeks built", () => {
   it("names, on every item, a capability a week actually builds", () => {
-    const capabilityOfWeek = new Map<string, string>();
-    const capabilityBySentence = new Map<string, string>();
+    // "Exactly" here means exactly up to case, spacing and a trailing stop ---
+    // a sentence that differs by a full stop is the same promise, and failing
+    // on it would teach me to copy-paste more carefully rather than to think.
+    const taught = new Map<string, string>();
     for (const week of nodes("sessions")) {
       const capability = meta(week, "capability");
-      if (capability === "") continue;
-      capabilityOfWeek.set(week.id, capability);
-      capabilityBySentence.set(normalise(capability), week.id);
+      if (capability !== "") taught.set(normalise(capability), week.id);
     }
 
     const items = nodes("assessments");
     expect(items.length, "a course with no assessment tests nothing").toBeGreaterThan(0);
     const unfounded: string[] = [];
     for (const item of items) {
-      const claimed = metaList(item, "assesses");
-      expect(
-        claimed.length,
-        `${item.id} has no assesses: --- name the week, or the capability, it tests`,
-      ).toBeGreaterThan(0);
-      for (const entry of claimed) {
-        // An entry is either a ref to the week (the preferred form: one
-        // address per node, capability read rather than restated) or that
-        // week's capability sentence verbatim. A ref has a slash or is a bare
-        // same-collection slug; a sentence has spaces.
-        const asRef = entry.includes("/") ? entry : `sessions/${entry}`;
-        const found = capabilityOfWeek.has(asRef) || capabilityBySentence.has(normalise(entry));
-        if (!found) unfounded.push(`${item.id} assesses "${entry}"`);
+      const capability = meta(item, "capability");
+      if (capability === "") {
+        unfounded.push(`${item.id} has no capability: --- which week's capability does it test?`);
+      } else if (!taught.has(normalise(capability))) {
+        unfounded.push(`${item.id} tests "${capability}", which no week builds`);
       }
     }
     expect(
       unfounded,
-      "these name a capability no teaching week builds, so the course is marking something it never taught",
+      "the course is marking something it never taught",
     ).toEqual([]);
   });
 });
@@ -389,6 +375,23 @@ describe("the home page states the course's central claim", () => {
     ).not.toMatch(/one sentence stating/i);
   });
 
+  it("lists every week's capability as an objective, verbatim", () => {
+    // Read from the collection, never from a list typed into the page: this
+    // fails the moment a week exists that the home page doesn't name, which is
+    // exactly what a hand-written list of objectives stops being able to do.
+    const page = plainText(built("index.html"));
+    const missing = nodes("sessions")
+      .filter((week) => {
+        const capability = meta(week, "capability");
+        return capability === "" || !page.includes(plainText(capability));
+      })
+      .map((week) => week.id);
+    expect(
+      missing,
+      "these weeks' capabilities are not on the home page --- a week with no capability: has nothing to list",
+    ).toEqual([]);
+  });
+
   it("prints that sentence, word for word, on the home page", () => {
     // One source, two readers: the page renders this constant and this test
     // looks for it in the built HTML, so a rewritten claim cannot leave a
@@ -404,6 +407,9 @@ describe("the home page states the course's central claim", () => {
 // ---------------------------------------------------------------------------
 // What nothing here can hold, and the crit will:
 //
+//   - whether a week's title is a claim or a topic. A regex tells a sentence
+//     from a noun phrase and cannot tell a claim from an assertion, so the
+//     check would pass the weak titles and I would start writing for it.
 //   - whether the claim is worth holding for a semester, or just a sentence.
 //   - whether each week's one line about how it serves the claim is true, or
 //     an assertion pasted onto a week that does something else.
