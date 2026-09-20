@@ -11,11 +11,16 @@ photo: ./marisol-quaye.svg
 photoAlt: An abstract tile — filled cells stepping diagonally across a spreadsheet grid, with one orange cell off the diagonal
 ---
 
-<!-- STARTER_CONTENT: replace this person entry, then remove this comment. -->
+Marisol convenes the course and wrote most of it. Eight years spent balancing
+combat for a studio that shipped three tactical RPGs is where the habit of
+rebuilding somebody else's system in a spreadsheet before arguing about it comes
+from.
 
-Replace this entry. A people page carries a short bio and whatever a student
-needs in order to contact the right person for the right thing --- and nothing
-that will be stale by week 3.
+Teaches weeks 1, 3, 5, 7, 9 and 11, and marks the design documents.
 
-Consultation hours, contact preferences and the escalation path (who to ask
-first, who to ask when that does not work) are the parts students actually read.
+**Consultation:** Wednesdays 2–4pm, or by appointment. Email is the reliable
+channel, read once a day and answered within two working days.
+
+**Ask Marisol first about:** the design document, anything to do with marking, and
+extensions. If a question is about whether your spreadsheet model is wrong, ask
+Idris first — that's faster.

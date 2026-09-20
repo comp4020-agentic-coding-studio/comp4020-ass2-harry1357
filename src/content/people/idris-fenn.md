@@ -11,7 +11,15 @@ photo: ./idris-fenn.svg
 photoAlt: An abstract tile — a column of bars on a spreadsheet grid, each shorter than the last, the final one orange at zero
 ---
 
-<!-- STARTER_CONTENT: replace this person entry, then remove this comment. -->
+Idris tutors the practical half of the course and keeps the recordings and save
+files the exercises run on. Came to games from statistics, and still holds that
+most arguments about difficulty are arguments about a distribution nobody has
+plotted.
 
-Replace this entry. A second person makes the listing, role ordering and
-teacher-reference fields visible before you replace the cast with your own.
+Teaches weeks 2, 4, 6, 8, 10 and 12, and marks the three small items.
+
+**Consultation:** Thursdays 10am–12pm in the lab, drop in.
+
+**Ask Idris first about:** spreadsheets that give the wrong answer, fitting a
+formula to data that won't cooperate, and where to find a recording of a
+specific fight. Bring the broken sheet rather than a description of it.
