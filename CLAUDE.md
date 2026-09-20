@@ -175,7 +175,10 @@ knows nor cares about any of them. Most have a check in
 
 - **The home page states the central claim in one sentence**, read from `claim`
   in `src/course-config.ts` so the page and the check can't drift apart. Every
-  week's page opens with one line saying how that week serves the claim.
+  week carries one line saying how it serves that claim in `serves:`, and the
+  session template renders it under the date. It is frontmatter rather than a
+  body opening on purpose: twelve bodies that all start "Serves the claim:" is
+  the template tell the rule below exists to stop.
 - **The home page lists all twelve capabilities as the learning objectives**,
   generated from the weeks' `capability:` fields. Never a hand-written list — a
   restated capability goes stale the first time a week is rewritten, and
@@ -219,6 +222,13 @@ knows nor cares about any of them. Most have a check in
   "at its core", and "not just … but" constructions. Literal "landscape"
   (orientation, mode, format, photography, painting) is exempt — the ban is on
   the metaphor.
+- **Weeks share a register, not a skeleton.** Don't reuse one section structure
+  across weeks — a marker reading three non-adjacent weeks must meet three
+  different shapes (one might open on a worked example, one on a wrong claim to
+  knock down, one on the activity itself). Repeated authorial devices ("say it
+  again") appear at most once in the course. This came from reading week 2 back
+  after writing four weeks to the same mould: the prose was fine and the four
+  pages together read as a form being filled in.
 - **If two weeks could swap positions unnoticed, one of them is wrong.** The
   checkable corner of that is unique descriptions, objects and capabilities.
   The rest is read, not measured.
