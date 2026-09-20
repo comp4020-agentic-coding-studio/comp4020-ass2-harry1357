@@ -60,31 +60,36 @@ export const slopCourseMetaSchema = z
 // Replace every placeholder value, but keep the shape: the catalogue ingests
 // this API contract when the course is published.
 //
-// The code's last three digits were assigned to this repo when it was
-// provisioned, and no other course in the cohort has them. Change the first
-// digit to your course's level (and `level` to match); keep the other three.
-// STARTER_CONTENT: replace this course record, then remove this comment.
+// 096 was allocated to this repo and no other course in the cohort has it. The
+// leading 2 is the level: second-year, because it asks for arithmetic and
+// patience rather than any prior coursework.
 export const courseMeta = slopCourseMetaSchema.parse({
-  code: "SLOP1096",
-  title: "Course Title Goes Here",
+  code: "SLOP2096",
+  title: "Every Battle Is a Spreadsheet",
   session: "Semester 1",
   year: 2027,
-  level: 1,
+  level: 2,
   startDate: "2027-02-22",
   endDate: "2027-05-28",
   description:
-    "One concise paragraph explaining what this course is, who it is for, " +
-    "and why somebody would choose to spend a semester taking it.",
-  tags: ["replace me"],
+    "A semester spent reading the arithmetic under Japanese RPG combat: turn " +
+    "order, initiative counters, damage formulas and the rolls around them. " +
+    "You measure real fights, rebuild their systems in a spreadsheet, and " +
+    "design one of your own.",
+  // The schema allows three. "combat" lost to "systems", which carries it.
+  tags: ["game design", "systems", "JRPG"],
 }) satisfies CourseMetaInput;
+
+/** The line under the title. Not a field of `courseMeta` for the same reason
+ *  `claim` isn't: that record's schema is strict and parsed at config time. */
+export const subtitle = "Systems Design in Japanese RPGs";
 
 // The claim is a sibling of `courseMeta` rather than a field of it because the
 // integration's `courseMetaSchema` is strict and parses the record at config
 // time: an extra key there fails the build. It is still the single source ---
 // the home page prints this constant and `spec/course-design.test.ts` reads it
 // back out of the built HTML, so the two cannot drift apart.
-// STARTER_CONTENT: replace this claim with the course's own, then remove this
-// comment.
 export const claim = claimSchema.parse(
-  "One sentence stating the course's central claim, which every week then moves forward.",
+  "Every JRPG battle is a small deterministic system wearing a costume, and " +
+    "once you can read the numbers you can read the design.",
 );

@@ -1,13 +1,26 @@
 ---
+import { getPublishedCollection } from "astro-course-university/content";
 import Card from "astro-theme-university/components/Card.astro";
 import CardGrid from "astro-theme-university/components/CardGrid.astro";
 import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
 import heroImage from "../assets/images/hero-home.avif";
-import { courseMeta } from "../course-config";
+import { claim, courseMeta, subtitle } from "../course-config";
 import { sessionLabels, siteConfig } from "../site-config";
 
 // STARTER_CONTENT: replace the hero artwork and its alt text below, then
 // remove this comment.
+
+// The objectives are the weeks' capabilities, read from the collection and
+// sorted by week. Never a list typed in here: a hand-written objective goes
+// stale the first time a week is rewritten and nothing notices.
+const weeks = await getPublishedCollection("sessions");
+const objectives = weeks
+  .map((week) => ({
+    week: week.data.week,
+    capability: typeof week.data.capability === "string" ? week.data.capability : "",
+  }))
+  .filter((objective) => objective.capability !== "")
+  .sort((a, b) => a.week - b.week);
 ---
 
 <ContentLayout
@@ -17,27 +30,51 @@ import { sessionLabels, siteConfig } from "../site-config";
   heroImageAlt="A lecture theatre reduced to flat gold and black shapes, rows of seats sweeping past the frame, in a two-ink risograph print"
   {...siteConfig}
 >
+  <p class="subtitle">{subtitle}</p>
+
+  <p class="claim">{claim}</p>
+
   <ul class="course-tags" aria-label="Course tags">
     {courseMeta.tags.map((tag) => <li>{tag}</li>)}
   </ul>
 
-  <!-- STARTER_CONTENT: replace the authored page below, then remove this comment. -->
-  <h2>What you will do</h2>
+  {
+    objectives.length > 0 && (
+      <>
+        <h2>What you will be able to do</h2>
+        <ol class="objectives">
+          {objectives.map((objective) => (
+            <li>
+              <span class="objectives-week">Week {objective.week}</span>
+              {objective.capability}
+            </li>
+          ))}
+        </ol>
+      </>
+    )
+  }
+
+  <h2>Who this is for</h2>
   <p>
-    Say what a student spends their time on — the making, reading, arguing or
-    measuring that fills the weeks. Name the artefact they walk out with.
+    You've finished at least one JRPG and you can open a spreadsheet. No
+    programming until week 12, and not much then. You don't need to have
+    finished the games we measure — recorded fights are provided — and you
+    don't need to like them.
   </p>
 
-  <h2>Who it is for</h2>
+  <h2>What the semester builds toward</h2>
   <p>
-    Say who this is aimed at and what they need to already know. Be specific
-    enough that someone can rule themselves in or out without emailing you.
+    Every week you measure something real and rebuild it in a spreadsheet, so
+    that by the end you have a folder of working models rather than a set of
+    opinions. The semester ends with a design brief: one battle system of your
+    own, specified tightly enough that somebody else could build it, with the
+    numbers worked out and defended.
   </p>
 
   <h2>Where to go next</h2>
   <CardGrid columns={2}>
     <Card title={sessionLabels.plural} href="/sessions/">
-      <p>The weekly schedule and what happens in each teaching session.</p>
+      <p>The twelve weeks, in order: the date, the claim and what it studies.</p>
     </Card>
     <Card title="Assessment" href="/assessments/">
       <p>What is marked, what it is worth, and when it is due.</p>
@@ -49,6 +86,20 @@ import { sessionLabels, siteConfig } from "../site-config";
 </ContentLayout>
 
 <style>
+  .subtitle {
+    margin-block: -0.5rem 1.5rem;
+    color: var(--at-text-secondary);
+    font-size: 1.15rem;
+  }
+
+  .claim {
+    margin-block: 0 2rem;
+    padding-inline-start: 1rem;
+    border-inline-start: 3px solid var(--at-tertiary);
+    font-size: 1.3rem;
+    line-height: 1.45;
+  }
+
   .course-tags {
     display: flex;
     flex-wrap: wrap;
@@ -64,5 +115,22 @@ import { sessionLabels, siteConfig } from "../site-config";
     color: var(--at-text-secondary);
     background: var(--at-bg-alt);
     font-size: 0.9rem;
+  }
+
+  .objectives {
+    padding-inline-start: 1.25rem;
+  }
+
+  .objectives li {
+    margin-block-end: 0.6rem;
+  }
+
+  .objectives-week {
+    display: inline-block;
+    min-inline-size: 4.5rem;
+    color: var(--at-text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 </style>
