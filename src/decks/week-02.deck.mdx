@@ -1,0 +1,177 @@
+---
+title: Speed Is a Reset, Not a Rate
+description: Week 2 — the initiative counter, and why Final Fantasy X's Agility doesn't make anybody faster
+---
+
+{/* _class: impact */}
+
+# Speed Is a Reset, Not a Rate
+
+Week 2 — the initiative counter
+
+---
+
+## Last week
+
+A round is a container.
+
+Commands go in, an order comes out, everything resolves, repeat.
+
+Pokémon sorts. Dragon Quest rolls.
+
+---
+
+## This week
+
+Final Fantasy X has no rounds.
+
+---
+
+## Two ways to be fast
+
+**ATB** — a bar fills continuously. Full bar, you act.
+
+Speed is throughput. A fast character fills faster.
+
+---
+
+## Two ways to be fast
+
+**CTB** — a counter ticks down. Zero, you act, counter resets.
+
+All counters tick at the same rate.
+
+Speed is the size of the reset.
+
+---
+
+{/* _class: banner */}
+
+## Agility doesn't make you faster
+
+It makes the gap smaller.
+
+---
+
+## The formula
+
+```
+counter = tickSpeed × rank × hasteMultiplier
+```
+
+Three inputs. Everything in the fight comes out of them.
+
+---
+
+## Input 1: tick speed
+
+Agility goes into a lookup table, tick speed comes out.
+
+A table is a step function — gains arrive in jumps, and the designer
+chooses where the steps are.
+
+Find where yours flattens before you spend on it.
+
+---
+
+## Input 2: rank
+
+| Action | Rank |
+| ------ | ---- |
+| Change equipment, escape | 1 |
+| Item, Defend | 2 |
+| Attack, most abilities | 3 |
+| … up to | 8 |
+
+---
+
+## What rank buys
+
+A rank 1 action costs a third of a rank 3.
+
+Three cheap turns in the time somebody else takes one.
+
+This is why Defend is a real move in FFX.
+
+---
+
+## Rounding
+
+Every step rounds down.
+
+At high Agility with Haste, two rank 1 actions can cost fewer ticks
+than one rank 2.
+
+That's the arithmetic, not a bug.
+
+---
+
+## Input 3: Haste
+
+Halves the reset. Slow doubles it.
+
+Casting it also halves the **current** counter, once.
+
+Dispelling it doesn't give the counter back.
+
+---
+
+## So Haste is worth most early
+
+Its value is measured in resets avoided, not speed gained.
+
+---
+
+## The prediction
+
+Tick speeds plus ranks gives you the next five turns.
+
+FFX prints the same list on the HUD.
+
+Rare thing: you can check your model against the game's.
+
+---
+
+## Where the list breaks
+
+It assumes everyone takes a rank 3 action.
+
+Defend, an item, a Haste, a Slow — invalid from there on.
+
+Ties don't break it: fixed order, party first, Cid last.
+
+---
+
+{/* _class: banner */}
+
+## A system that asks you to plan five turns ahead
+
+can't then flip a coin.
+
+---
+
+## This week's activity
+
+One row per combatant, one column per tick.
+
+Implement the formula. Feed it a real fight. Compare.
+
+Then cast Haste at tick 0 and at tick 40.
+
+---
+
+## The failure worth meeting
+
+Implement Haste as a change to the **rate**.
+
+Your model drifts slowly and stays plausible for about a dozen ticks.
+
+Better to meet that in a spreadsheet than in a fight.
+
+---
+
+{/* _class: impact */}
+
+# Next week
+
+The number under the animation.

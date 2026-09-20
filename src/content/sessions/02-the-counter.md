@@ -98,3 +98,6 @@ That's the failure worth meeting in a spreadsheet rather than in a fight.
 
 The Final Fantasy Wiki's FFX battle system page has the counter model; its Rank
 page has the table of action ranks. Read them for the numbers.
+
+[The week 2 slides](/decks/week-02/) carry the same arithmetic in the order
+the session runs it.

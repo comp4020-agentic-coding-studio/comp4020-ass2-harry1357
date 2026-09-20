@@ -4,6 +4,7 @@ description:
   Week 2 — the first substantive material, and the run-up to the first review
 week: 2
 date: 2027-03-01
+slides: /decks/week-02/
 teachers:
   - idris-fenn
 related:
