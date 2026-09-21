@@ -1,3 +1,9 @@
+// Site-wide CSS rides in here because `src/layouts/PageLayout.astro` renders on
+// zero pages --- every .astro page imports the theme's ContentLayout directly
+// and the MDX pages go through the theme's own wrapper, so an import there is
+// tree-shaken away. This module is the one thing every page pulls in.
+import "./styles/site.css";
+
 import { defineSiteConfig } from "astro-theme-university/types";
 import { slopBranding } from "astro-theme-slop";
 import { courseMeta } from "./course-config";

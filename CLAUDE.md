@@ -302,6 +302,11 @@ than screenshotting for anything you need a number from.
   `--force-prefers-reduced-motion` as a launch flag. Verify the reduced-motion
   path *renders what you think it does* rather than trusting the media query by
   inspection.
+- **`scroll-behavior: smooth` makes every focus measurement a race.** Tabbing to
+  an element below the fold scrolls it into view over several frames, so a rect
+  read one frame later says the element is off screen when it isn't. Twice now
+  that has produced a confident false finding. Poll `scrollY` until it stops
+  moving before you read a rect.
 - **Check your click is on screen.** Headless defaults to a small window; a
   probe that clicks at y=500 in a 469px-tall viewport reports "nothing happened"
   and looks exactly like a broken handler. Compute coordinates from
@@ -368,9 +373,22 @@ own. What axe can't see is still mine:
 
 stylelint is wired back into `check`, so these are enforced, not advisory. It
 lints `**/*.css`, and **it cannot see an inline `<style>` block in an `.astro`
-file** — so site-wide styling goes in a `.css` file that `PageLayout.astro`
-imports, not in a `<style is:global>` block. That's the whole reason the
-convention exists: styles the linter can't read are styles nothing checks.
+file** — so site-wide styling goes in `src/styles/site.css`, not in a
+`<style is:global>` block. That's the whole reason the convention exists: styles
+the linter can't read are styles nothing checks.
+
+- **`src/layouts/PageLayout.astro` renders on zero pages, so importing the
+  stylesheet there does nothing.** The carried-forward version of this rule said
+  to import it from that layout; it was never true here. `astro.config.ts` names
+  it as `defaultLayout`, but every `.astro` page imports the theme's
+  `ContentLayout` directly and the MDX pages go through the theme's own wrapper,
+  so nothing pulls PageLayout into the module graph and Vite drops the import.
+  `src/site-config.ts` is the one module every page imports, so the stylesheet
+  rides in there — which reaches 27 of 28 pages. The exception is the deck,
+  built by astromotion from its own template; it has its own `theme.css`.
+- **Prove a layout renders before you put anything in it.** Put a marker comment
+  in it, build, and `grep dist` for the marker. A layout that isn't in the graph
+  fails silently in both directions: no error, no output.
 
 - Don't use the `padding` / `margin` shorthand on a class that shares an element
   with a layout class — `padding: 2.5rem 0 4rem` on `.page` silently reset

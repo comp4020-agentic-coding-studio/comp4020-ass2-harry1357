@@ -1,0 +1,21 @@
+/* Site-wide styling, in a file stylelint can read.
+ *
+ * A `<style is:global>` block in PageLayout.astro would work and would not be
+ * linted, which is the whole reason this file exists: styles nothing checks
+ * are styles that drift.
+ */
+
+/* The footer theme toggle is declared `all: unset`, which resets `outline`
+ * along with everything else. That rule sits after the theme's global
+ * `:focus-visible` at equal specificity, so source order wins and the control
+ * keeps focus with no ring at all --- the one focusable on the site without
+ * one, and invisible to axe, which cannot judge focus appearance. This puts
+ * the theme's own treatment back rather than inventing a second one: same
+ * accent, same offset, same background halo that keeps it legible on either
+ * ground.
+ */
+.at-footer-theme-toggle:focus-visible {
+  outline: 2px solid var(--at-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--at-bg);
+}
