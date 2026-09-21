@@ -19,22 +19,17 @@ weeks built.
 
 ## What went into the harness, and in what order
 
-The harness went in before a word of content, and the checks were committed red
-on purpose
-([`be33ddd`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/be33ddd),
-[`3215ac9`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/3215ac9);
-revised after the reference reading in
-[`b85d087`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/b85d087)
-and
-[`198e9f0`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/198e9f0)).
-Every week carries object: and capability:; a check fails if two weeks share
-either, if the home page doesn't render every capability from the collection, if
-an assessment names a capability no week builds, or if the weights don't sum to
-100. A slop-lint bans fourteen phrases and carries a self-test per phrase, so I
-knew it fired before I trusted a green. Red-first is the only way to know the
-checks measure the course rather than the placeholder: they went green one by
-one as content landed
-([`681b37a`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/681b37a),
+The harness went in before a word of content, and the checks were committed
+red on purpose ([`be33ddd`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/be33ddd),
+[`3215ac9`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/3215ac9); revised after reading
+the reference courses in [`b85d087`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/b85d087) and
+[`198e9f0`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/198e9f0)). They hold the course to its promises:
+unique objects and capabilities per week, the home page rendering every
+capability from the collection, assessments naming capabilities weeks actually
+build and summing to 100, and a slop-lint with a self-test per banned phrase,
+so I knew it fired before trusting a green. Red-first is how I knew the checks
+measured the course rather than the placeholder: they went green as content
+landed ([`681b37a`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/681b37a),
 [`b5708c3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/b5708c3),
 [`d48e44d`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/d48e44d),
 [`55fd956`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/55fd956)).
@@ -76,4 +71,6 @@ lecture only to state the claim and derive the model once
 ## What the checks still can't see
 
 Whether a stranger would want to take it. I read weeks 2 and 9 and the
-assessment page for that. Nothing in spec/ can.
+assessment page for that. Nothing in spec/ can. Nor could axe see a suppressed
+focus ring on the theme toggle; that one took a keyboard
+([`b77963a`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-harry1357/commit/b77963a)).
